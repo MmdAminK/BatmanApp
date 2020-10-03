@@ -10,7 +10,7 @@ interface FilmsDao {
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insertFilms(films: List<Film>)
 
-    @Update
+    @Update(onConflict = OnConflictStrategy.REPLACE)
     suspend fun updateFilm(film: Film)
 
     @Query("SELECT * FROM Film")

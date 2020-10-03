@@ -61,7 +61,8 @@ class FilmDetail : Fragment() {
             withContext(Main) {
                 fragmentFilmDetailBinding.film = res.await()
                 viewModel.result.observe(viewLifecycleOwner, Observer {
-                    fragmentFilmDetailBinding.film = it
+                    if (it != null)
+                        fragmentFilmDetailBinding.film = it
                 })
             }
         }
