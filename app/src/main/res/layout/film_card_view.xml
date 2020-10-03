@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <data>
+        <variable
+            name="film"
+            type="com.app.batman.models.Film" />
+    </data>
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:theme="@style/Platform.MaterialComponents.Light"
+        android:layout_marginTop="@dimen/pageMarginAndOffset"
+        android:layout_marginBottom="@dimen/pageMarginAndOffset"
+        android:layout_marginLeft="@dimen/pageMarginAndOffset"
+        android:layout_marginRight="@dimen/pageMarginAndOffset"
+        app:cardCornerRadius="12dp"
+        app:cardElevation="5dp">
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <com.flaviofaria.kenburnsview.KenBurnsView
+                android:id="@+id/poster"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:scaleType="centerCrop"
+                app:loadUrl="@{film.poster}"
+                android:contentDescription="@string/content"/>
+
+            <TextView
+                android:id="@+id/type"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="16dp"
+                android:background="@drawable/type_background"
+                android:drawablePadding="4dp"
+                android:gravity="center_vertical"
+                android:paddingStart="8dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="2dp"
+                android:text="@{film.type}"
+                android:textColor="#ffffff"
+                app:drawableStartCompat="@drawable/ic_play_button"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toBottomOf="@+id/poster"
+                app:layout_constraintTop_toTopOf="@+id/title"
+                android:background="#D6000000"/>
+
+            <TextView
+                android:id="@+id/title"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:paddingTop="4dp"
+                android:textSize="18sp"
+                android:paddingStart="16dp"
+                android:textStyle="bold"
+                android:textColor="#ffffff"
+                android:text="@{film.title}"
+                app:layout_constraintBottom_toTopOf="@+id/year"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/year"
+                android:layout_width="0dp"
+                android:layout_marginBottom="8dp"
+                android:paddingTop="4dp"
+                android:textSize="14sp"
+                android:paddingStart="16dp"
+                android:text="@{film.year}"
+                android:textColor="#ffffff"
+                android:drawablePadding="6dp"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:drawableStartCompat="@drawable/ic_clock" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+</layout>

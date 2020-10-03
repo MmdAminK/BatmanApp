@@ -1,0 +1,92 @@
+apply plugin: 'com.android.application'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion 29
+
+    defaultConfig {
+        applicationId "com.app.batman"
+        minSdkVersion 21
+        targetSdkVersion 29
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+    }
+    buildFeatures {
+        dataBinding true
+    }
+    kotlinOptions {
+        freeCompilerArgs += ["-Xopt-in=kotlin.RequiresOptIn"]
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    implementation fileTree(dir: "libs", include: ["*.jar"])
+    implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
+    implementation 'androidx.core:core-ktx:1.3.1'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
+    implementation 'androidx.navigation:navigation-fragment-ktx:2.3.0'
+    implementation 'androidx.navigation:navigation-ui-ktx:2.3.0'
+    testImplementation 'junit:junit:4.12'
+    implementation "androidx.drawerlayout:drawerlayout:1.1.1"
+    implementation 'com.flaviofaria:kenburnsview:1.0.7'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+
+    //ConstraintLayout
+    def ConstraintLayout_Version = '2.0.1'
+    implementation "androidx.constraintlayout:constraintlayout:$ConstraintLayout_Version"
+
+    //Retrofit
+    def Retrofit_Version = '2.8.1'
+    implementation "com.squareup.retrofit2:retrofit:$Retrofit_Version"
+    implementation "com.squareup.retrofit2:converter-gson:$Retrofit_Version"
+    implementation "com.squareup.okhttp3:logging-interceptor:4.7.2"
+    implementation 'com.squareup.retrofit2:converter-jackson:2.1.0'
+
+    //Coroutines
+    def Coroutine_Version = '1.3.7'
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:$Coroutine_Version"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$Coroutine_Version"
+
+    // ViewModel
+    def Lifecycle_Version = '2.2.0'
+    implementation "androidx.lifecycle:lifecycle-extensions:$Lifecycle_Version"
+    kapt "androidx.lifecycle:lifecycle-compiler:$Lifecycle_Version"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:$Lifecycle_Version"
+
+    // LiveData
+    implementation "androidx.lifecycle:lifecycle-livedata:$Lifecycle_Version"
+
+    //Room
+    def Room_Version = '2.3.0-alpha02'
+    implementation "androidx.room:room-runtime:$Room_Version"
+    kapt "androidx.room:room-compiler:$Room_Version"
+    implementation "androidx.room:room-ktx:$Room_Version"
+
+    def Picasso_Version = "2.71828"
+    implementation "com.squareup.picasso:picasso:$Picasso_Version"
+
+    //Material
+    def Material_Version = '1.3.0-alpha02'
+    implementation "com.google.android.material:material:$Material_Version"
+
+    //Pagination
+    def Paging_Version = "3.0.0-alpha06"
+    implementation "androidx.paging:paging-runtime:$Paging_Version"
+    implementation "androidx.paging:paging-rxjava2:$Paging_Version"
+    implementation "androidx.paging:paging-guava:$Paging_Version"
+
+
+}
